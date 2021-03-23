@@ -3,7 +3,7 @@ package web_services;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Query {
+public class Query implements SQLConvertable {
 
     private String id = "";
     private String age = "";
@@ -13,7 +13,7 @@ public class Query {
     private String gender = "";
 
 
-    public Query(){
+    public Query() {
     }
 
     public Query(String age, String name, String surname,  String country, String gender) {
@@ -42,5 +42,17 @@ public class Query {
     @Override
     public String toString(){
         return "";
+    }
+
+    @Override
+    public HashMap<String, String> buildMap() {
+        HashMap<String, String> queryMap = new HashMap<>();
+        if (!this.getId().equals("")) queryMap.put("id", this.getId());
+        if (!this.getName().equals("")) queryMap.put("name", this.getName());
+        if (!this.getSurname().equals("")) queryMap.put("surname", this.getSurname());
+        if (!this.getAge().equals("")) queryMap.put("age", this.getAge());
+        if (!this.getCountry().equals("")) queryMap.put("country", this.getCountry());
+        if (!this.getGender().equals("")) queryMap.put("gender", this.getGender());
+        return queryMap;
     }
 }
