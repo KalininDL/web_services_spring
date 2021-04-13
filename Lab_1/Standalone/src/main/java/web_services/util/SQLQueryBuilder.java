@@ -62,7 +62,7 @@ public class SQLQueryBuilder {
 
     public String buildSelectQuery(SQLConvertable query){
         HashMap<String, String> map = query.buildMap();
-        StringBuilder sqlQuery = new StringBuilder("select * from persons where ");
+        StringBuilder sqlQuery = new StringBuilder("SELECT * FROM persons WHERE ");
         int counter = 0;
         for (Map.Entry<String, String> e: map.entrySet()){
             counter++;
