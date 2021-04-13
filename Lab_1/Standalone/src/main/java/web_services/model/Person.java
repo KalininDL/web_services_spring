@@ -1,4 +1,4 @@
-package web_services;
+package web_services.model;
 
 public class Person {
     private String name;

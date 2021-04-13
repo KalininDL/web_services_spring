@@ -1,4 +1,6 @@
-package web_services;
+package web_services.util;
+
+import web_services.MariaDBDAO;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

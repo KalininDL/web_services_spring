@@ -1,6 +1,9 @@
 package web_services;
 
-import java.util.List;
+import web_services.model.Person;
+import web_services.model.Query;
+import web_services.util.SQLQueryBuilder;
+
 import javax.jws.WebMethod;
 import javax.jws.WebService;
 import javax.jws.soap.SOAPBinding;

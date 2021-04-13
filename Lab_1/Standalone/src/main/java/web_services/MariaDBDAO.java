@@ -1,5 +1,9 @@
 package web_services;
 
+import org.mariadb.jdbc.internal.util.exceptions.MariaDbSqlException;
+import web_services.model.Person;
+import web_services.util.ConnectionUtil;
+
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -53,13 +57,13 @@ public class MariaDBDAO {
         try (Connection connection = ConnectionUtil.getConnection()) {
             Statement stmt = connection.createStatement();
             int res = stmt.executeUpdate(sqlQuery);
-            String result = new String("Query affected " + res + " rows");
+            String result = "Query affected " + res + " rows";
             System.out.println(result);
             return result;
-        } catch (SQLException ex) {
+        } catch (Exception ex) {
             Logger.getLogger(MariaDBDAO.class.getName()).log(Level.SEVERE, null, ex);
+            return ("Error! " + ex.getMessage());
         }
-        return ("Error!");
     }
 
     public Person[] getPersonsBySqlQuery(String sqlQuery) {

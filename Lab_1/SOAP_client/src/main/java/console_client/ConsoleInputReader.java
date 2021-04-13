@@ -16,13 +16,34 @@ public class ConsoleInputReader {
                     Integer.parseInt(age);
                     return age;
                 } catch (NumberFormatException e) {
-                    System.out.println("Число некорректно!");
+                    System.out.println("Number is incorrect!");
                     return readNum(reader, message);
                 }
             }
     }
 
-    public Query readInput() {
+    public Query readInsertInput() {
+        Query query = new Query();
+        try {
+            BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+            System.out.println("Enter name: ");
+            query.setName(reader.readLine());
+            System.out.println("Enter surname: ");
+            query.setSurname(reader.readLine());
+            query.setAge(readNum(reader, "Enter age: "));
+            System.out.println("Enter country: ");
+            query.setCountry(reader.readLine());
+            System.out.println("Enter gender: ");
+            query.setGender(reader.readLine());
+            return query;
+        }
+        catch (IOException e) {
+            System.out.println(e.toString());
+        }
+        return query;
+    }
+
+    public Query readSearchInput() {
         Query query = new Query();
         try {
             BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));

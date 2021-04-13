@@ -1,4 +1,6 @@
-package web_services;
+package web_services.model;
+
+import web_services.SQLConvertable;
 
 import java.util.HashMap;
 import java.util.Map;

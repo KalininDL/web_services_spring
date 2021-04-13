@@ -1,4 +1,7 @@
-package web_services;
+package web_services.util;
+
+import web_services.model.Query;
+import web_services.SQLConvertable;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -7,7 +10,6 @@ public class SQLQueryBuilder {
 
     public String buildInsertQuery(SQLConvertable query){
         HashMap<String, String> map = query.buildMap();
-
         StringBuilder sqlQuery = new StringBuilder("INSERT INTO persons (");
         int counter = 0;
         for (Map.Entry<String, String> e: map.entrySet()){
@@ -48,7 +50,7 @@ public class SQLQueryBuilder {
 
     public String buildDeleteQuery(SQLConvertable query){
         HashMap<String, String> map = query.buildMap();
-        StringBuilder sqlQuery = new StringBuilder("DELETE * FROM persons WHERE ");
+        StringBuilder sqlQuery = new StringBuilder("DELETE FROM persons WHERE ");
         int counter = 0;
         for (Map.Entry<String, String> e: map.entrySet()){
             counter++;

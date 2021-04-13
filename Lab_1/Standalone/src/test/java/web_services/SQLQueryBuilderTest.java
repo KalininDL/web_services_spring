@@ -1,7 +1,8 @@
 package web_services;
 
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
+import web_services.model.Query;
+import web_services.util.SQLQueryBuilder;
 
 import static org.junit.jupiter.api.Assertions.*;
 
