@@ -1,5 +1,7 @@
 package web_services.util;
 
+import web_services.errors.EmptyRequestException;
+import web_services.errors.faultbeans.PersonServiceFault;
 import web_services.model.Query;
 import web_services.SQLConvertable;
 
@@ -60,8 +62,10 @@ public class SQLQueryBuilder {
         return sqlQuery.toString();
     }
 
-    public String buildSelectQuery(SQLConvertable query){
+    public String buildSelectQuery(SQLConvertable query) throws EmptyRequestException {
         HashMap<String, String> map = query.buildMap();
+        PersonServiceFault fault = new PersonServiceFault();
+        if(map.size() == 0) throw new EmptyRequestException("Query is empty!", fault);
         StringBuilder sqlQuery = new StringBuilder("SELECT * FROM persons WHERE ");
         int counter = 0;
         for (Map.Entry<String, String> e: map.entrySet()){

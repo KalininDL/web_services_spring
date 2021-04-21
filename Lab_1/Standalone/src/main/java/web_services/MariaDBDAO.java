@@ -77,4 +77,15 @@ public class MariaDBDAO {
         }
         return persons_array;
     }
+
+    public Boolean checkIfPersonExists(String sqlQuery) {
+        try (Connection connection = ConnectionUtil.getConnection()) {
+            Statement stmt = connection.createStatement();
+            ResultSet rs = stmt.executeQuery(sqlQuery);
+            return processQuery(rs).length > 0;
+        } catch (SQLException ex) {
+            Logger.getLogger(MariaDBDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return false;
+    }
 }
