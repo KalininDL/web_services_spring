@@ -17,7 +17,7 @@ public class OperationHandler {
     ConsoleInputReader inputReader;
     PersonService personService;
 
-    public void operationSelectDialog() throws EmptyRequestException, SQLConvertException, PersonDoesNotExistException {
+    public void operationSelectDialog() throws Exception {
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
         System.out.println("Select operation: \n"
         + "\t1 - search\n" +
@@ -55,7 +55,7 @@ public class OperationHandler {
         }
     }
 
-    public void selectQuery() throws EmptyRequestException, SQLConvertException, PersonDoesNotExistException {
+    public void selectQuery() throws Exception {
             Person query = inputReader.readSearchInput();
             PersonArray persons = personService.getPersonWebServicePort().selectPersonsByQueryClass(query);
             for (Person person : persons.getItem()) {
@@ -75,7 +75,7 @@ public class OperationHandler {
             System.out.println("Server error");
     }
 
-    public void updateQuery() throws EmptyRequestException, SQLConvertException, PersonDoesNotExistException {
+    public void updateQuery() throws Exception {
         Person from = inputReader.readSearchInput();
         System.out.println("Insert updated information");
         Person to = inputReader.readInsertInput();
@@ -86,7 +86,7 @@ public class OperationHandler {
             System.out.println("Server error");
     }
 
-    public void deleteQuery() throws SOAPFaultException, EmptyRequestException, SQLConvertException, PersonDoesNotExistException {
+    public void deleteQuery() throws Exception {
         Person query = inputReader.readSearchInput();
         String result = personService.getPersonWebServicePort().deletePersonByQueryClass(query);
         if (result != null)

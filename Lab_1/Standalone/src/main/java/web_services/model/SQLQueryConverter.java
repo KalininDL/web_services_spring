@@ -6,7 +6,6 @@ import web_services.errors.SQLConvertException;
 
 import java.lang.reflect.Field;
 import java.util.HashMap;
-import java.util.Map;
 import java.util.Objects;
 
 public class SQLQueryConverter {
@@ -15,7 +14,6 @@ public class SQLQueryConverter {
         if (Objects.isNull(object)) {
             throw new SQLConvertException("The object to serialize is null");
         }
-
         Class<?> clazz = object.getClass();
         if (!clazz.isAnnotationPresent(QueryClass.class)) {
             throw new SQLConvertException("The class "
@@ -33,7 +31,7 @@ public class SQLQueryConverter {
                 if(field.get(object) != null) {
                     if(field.getType() == int.class && (int)field.get(object) > 0)
                         queryMap.put(field.getName(), Integer.toString((int)field.get(object)));
-                    if(field.get(object).getClass() == String.class && !((field.get(object))).equals(""))
+                    if(field.get(object) instanceof String && !((field.get(object))).equals(""))
                         queryMap.put(field.getName(), (String) (field.get(object)));
                 }
             }

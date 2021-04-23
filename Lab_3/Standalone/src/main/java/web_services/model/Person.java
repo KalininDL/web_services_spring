@@ -30,7 +30,6 @@ public class Person implements SQLConvertable {
     }
 
     public Person(String name, String surname, int age, String country, String gender) {
-        this.id = id;
         this.name = name;
         this.surname = surname;
         this.age = age;

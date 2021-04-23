@@ -5,8 +5,8 @@ import web_services.annotations.QueryField;
 import web_services.errors.SQLConvertException;
 
 import java.lang.reflect.Field;
+
 import java.util.HashMap;
-import java.util.Map;
 import java.util.Objects;
 
 public class SQLQueryConverter {
