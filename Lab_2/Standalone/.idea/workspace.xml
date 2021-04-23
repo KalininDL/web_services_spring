@@ -22,23 +22,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="aad28b92-ee42-4abb-9cb5-bf595d30bb6a" name="Default Changelist" comment="Bug fix in delete query builder">
-      <change afterPath="$PROJECT_DIR$/src/main/java/web_services/errors/EmptyRequestException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/web_services/errors/PersonDoesNotExistException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/web_services/errors/faultbeans/PersonServiceFault.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/DBConnection.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SOAP_client/src/main/java/console_client/OperationHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/../SOAP_client/src/main/java/console_client/OperationHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SOAP_client/src/main/java/console_client/WebServiceClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/../SOAP_client/src/main/java/console_client/WebServiceClient.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SOAP_client/target/classes/console_client/WebServiceClient.class" beforeDir="false" afterPath="$PROJECT_DIR$/../SOAP_client/target/classes/console_client/WebServiceClient.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/web_services/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/web_services/App.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/web_services/MariaDBDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/web_services/MariaDBDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/web_services/PersonWebService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/web_services/PersonWebService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/web_services/util/ConnectionUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/web_services/util/ConnectionUtil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/web_services/util/SQLQueryBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/web_services/util/SQLQueryBuilder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/web_services/App.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/web_services/App.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/web_services/MariaDBDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/web_services/MariaDBDAO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/web_services/PersonWebService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/web_services/PersonWebService.class" afterDir="false" />
-    </list>
+    <list default="true" id="aad28b92-ee42-4abb-9cb5-bf595d30bb6a" name="Default Changelist" comment="SQL query building mechanism reimplemented using reflection API and annotations" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -47,13 +31,18 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="JUnit5 Test Class" />
         <option value="Interface" />
         <option value="Class" />
+        <option value="JUnit5 Test Class" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$/../.." value="main" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
   </component>
   <component name="JupyterTrust" id="5d601110-cf6a-4015-83aa-5050dda2ba8c" />
@@ -87,19 +76,20 @@
   </component>
   <component name="RecentsManager">
     <key name="CreateTestDialog.RecentsKey">
+      <recent name="web_services.model" />
       <recent name="web_services" />
     </key>
     <key name="CreateTestDialog.Recents.Supers">
       <recent name="" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.App">
+  <component name="RunManager" selected="JUnit.SQLQueryBuilderTest">
     <configuration name="App" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="web_services.App" />
       <module name="Standalone" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="web_services.model.*" />
+          <option name="PATTERN" value="web_services.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -122,29 +112,13 @@
       <module name="Standalone" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="web_services.model.*" />
+          <option name="PATTERN" value="web_services.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="web_services" />
       <option name="MAIN_CLASS_NAME" value="web_services.SQLQueryBuilderTest" />
       <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="SQLQueryBuilderTest.buildDeleteQuery" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Standalone" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="web_services.model.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="web_services" />
-      <option name="MAIN_CLASS_NAME" value="web_services.SQLQueryBuilderTest" />
-      <option name="METHOD_NAME" value="buildDeleteQuery" />
-      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -181,12 +155,28 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="SQLQueryConverterTest.getQueryMapTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Standalone" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="web_services.model.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="web_services.model" />
+      <option name="MAIN_CLASS_NAME" value="web_services.model.SQLQueryConverterTest" />
+      <option name="METHOD_NAME" value="getQueryMapTest" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.App" />
         <item itemvalue="JUnit.SQLQueryBuilderTest" />
+        <item itemvalue="Application.App" />
+        <item itemvalue="JUnit.SQLQueryConverterTest.getQueryMapTest" />
         <item itemvalue="JUnit.SQLQueryBuilderTest.buildSelectQuery" />
-        <item itemvalue="JUnit.SQLQueryBuilderTest.buildDeleteQuery" />
         <item itemvalue="JUnit.SQLQueryBuilderTest.buildInsertQuery" />
       </list>
     </recent_temporary>
@@ -215,7 +205,7 @@
       <workItem from="1618332742398" duration="132000" />
       <workItem from="1618332903462" duration="822000" />
       <workItem from="1618496760927" duration="48000" />
-      <workItem from="1619015960325" duration="4365000" />
+      <workItem from="1619015960325" duration="13092000" />
     </task>
     <task id="LOCAL-00001" summary="Bug fix in delete query builder">
       <created>1618332530297</created>
@@ -224,7 +214,28 @@
       <option name="project" value="LOCAL" />
       <updated>1618332530297</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Minor fixes">
+      <created>1619027228618</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1619027228618</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Minor fixes">
+      <created>1619027279305</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1619027279305</updated>
+    </task>
+    <task id="LOCAL-00004" summary="SQL query building mechanism reimplemented using reflection API and annotations">
+      <created>1619174979250</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1619174979250</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -244,7 +255,9 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Bug fix in delete query builder" />
-    <option name="LAST_COMMIT_MESSAGE" value="Bug fix in delete query builder" />
+    <MESSAGE value="Minor fixes" />
+    <MESSAGE value="SQL query building mechanism reimplemented using reflection API and annotations" />
+    <option name="LAST_COMMIT_MESSAGE" value="SQL query building mechanism reimplemented using reflection API and annotations" />
   </component>
   <component name="WindowStateProjectService">
     <state x="2102" y="0" key="#Project_Structure" timestamp="1616169856887">
@@ -260,35 +273,39 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="233" y="0" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1280.680@0.0.1280.680" timestamp="1617029616865" />
-    <state x="446" y="47" key="#com.intellij.ide.util.MemberChooser" timestamp="1616498340561">
+    <state x="446" y="47" key="#com.intellij.ide.util.MemberChooser" timestamp="1619174197986">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="2589" y="72" key="#com.intellij.ide.util.MemberChooser/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1616170852817" />
-    <state x="446" y="47" key="#com.intellij.ide.util.MemberChooser/0.0.1280.680@0.0.1280.680" timestamp="1616498340561" />
+    <state x="446" y="47" key="#com.intellij.ide.util.MemberChooser/0.0.1280.680@0.0.1280.680" timestamp="1619174197986" />
+    <state x="371" y="88" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1619174794145">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="371" y="88" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1280.680@0.0.1280.680" timestamp="1619174794145" />
     <state x="421" y="96" key="FileChooserDialogImpl" timestamp="1616508138877">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="421" y="96" key="FileChooserDialogImpl/0.0.1280.680@0.0.1280.680" timestamp="1616508138877" />
-    <state width="1237" height="150" key="GridCell.Tab.0.bottom" timestamp="1619025838346">
+    <state width="618" height="150" key="GridCell.Tab.0.bottom" timestamp="1619174903891">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state width="1877" height="163" key="GridCell.Tab.0.bottom/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1616179681896" />
-    <state width="1237" height="150" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1619025838346" />
-    <state width="1237" height="150" key="GridCell.Tab.0.center" timestamp="1619025838346">
+    <state width="618" height="150" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1619174903891" />
+    <state width="618" height="150" key="GridCell.Tab.0.center" timestamp="1619174903890">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state width="1877" height="163" key="GridCell.Tab.0.center/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1616179681896" />
-    <state width="1237" height="150" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1619025838346" />
-    <state width="1237" height="150" key="GridCell.Tab.0.left" timestamp="1619025838345">
+    <state width="618" height="150" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1619174903890" />
+    <state width="618" height="150" key="GridCell.Tab.0.left" timestamp="1619174903889">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state width="1877" height="163" key="GridCell.Tab.0.left/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1616179681896" />
-    <state width="1237" height="150" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1619025838345" />
-    <state width="1237" height="150" key="GridCell.Tab.0.right" timestamp="1619025838346">
+    <state width="618" height="150" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1619174903889" />
+    <state width="618" height="150" key="GridCell.Tab.0.right" timestamp="1619174903891">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state width="1877" height="163" key="GridCell.Tab.0.right/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1616179681896" />
-    <state width="1237" height="150" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1619025838346" />
+    <state width="618" height="150" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1619174903891" />
     <state width="297" height="699" key="HiddenNamespacesPopup" timestamp="1616180480456">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
@@ -307,10 +324,10 @@
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
     <state x="2723" y="293" width="598" height="454" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1616159407535" />
-    <state x="412" y="127" key="com.intellij.testIntegration.createTest.CreateTestDialog" timestamp="1616407090624">
+    <state x="412" y="127" key="com.intellij.testIntegration.createTest.CreateTestDialog" timestamp="1619168804522">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="412" y="127" key="com.intellij.testIntegration.createTest.CreateTestDialog/0.0.1280.680@0.0.1280.680" timestamp="1616407090624" />
+    <state x="412" y="127" key="com.intellij.testIntegration.createTest.CreateTestDialog/0.0.1280.680@0.0.1280.680" timestamp="1619168804522" />
     <state x="93" y="93" width="1095" height="495" key="dock-window-1" timestamp="1618332411727">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
@@ -335,13 +352,18 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/web_services/PersonWebService.java</url>
-          <line>44</line>
+          <line>39</line>
           <option name="timeStamp" value="10" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/web_services/MariaDBDAO.java</url>
-          <line>70</line>
+          <line>81</line>
           <option name="timeStamp" value="11" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/web_services/model/SQLQueryConverter.java</url>
+          <line>40</line>
+          <option name="timeStamp" value="14" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

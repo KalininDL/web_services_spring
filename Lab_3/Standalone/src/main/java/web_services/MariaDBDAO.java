@@ -29,11 +29,7 @@ public class MariaDBDAO {
                 persons.add(person);
             }
             persons_array = new Person[persons.size()];
-            int i = 0;
-            for (Person p :persons) {
-                persons_array[i] = p;
-                i++;
-            }
+            persons.toArray(persons_array);
             return persons_array;
         } catch (SQLException ex) {
             Logger.getLogger(MariaDBDAO.class.getName()).log(Level.SEVERE, null, ex);

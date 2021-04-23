@@ -1,7 +1,8 @@
 package web_services;
 
 import org.junit.jupiter.api.Test;
-import web_services.model.Query;
+import web_services.errors.SQLConvertException;
+import web_services.model.Person;
 import web_services.util.SQLQueryBuilder;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -9,10 +10,10 @@ import static org.junit.jupiter.api.Assertions.*;
 class SQLQueryBuilderTest {
 
     @Test
-    void buildInsertQuery() {
-        Query query = new Query();
+    void buildInsertQuery() throws SQLConvertException {
+        Person query = new Person();
         SQLQueryBuilder sqlQueryBuilder = new SQLQueryBuilder();
-        query.setAge("18");
+        query.setAge(18);
         query.setName("Иван");
         query.setSurname("Михайлов");
         String sqlQuery = sqlQueryBuilder.buildInsertQuery(query);
@@ -21,14 +22,14 @@ class SQLQueryBuilderTest {
     }
 
     @Test
-    void buildUpdateQuery() {
-        Query query = new Query();
+    void buildUpdateQuery() throws SQLConvertException {
+        Person query = new Person();
         SQLQueryBuilder sqlQueryBuilder = new SQLQueryBuilder();
-        query.setAge("18");
+        query.setAge(18);
         query.setName("Иван");
         query.setSurname("Михайлов");
-        Query queryUpdate = new Query();
-        queryUpdate.setAge("19");
+        Person queryUpdate = new Person();
+        queryUpdate.setAge(18);
         queryUpdate.setName("Максим");
         queryUpdate.setSurname("Михайлов");
         queryUpdate.setGender("М");
@@ -38,15 +39,15 @@ class SQLQueryBuilderTest {
     }
 
     @Test
-    void buildDeleteQuery() {
-        Query query = new Query();
+    void buildDeleteQuery() throws SQLConvertException {
+        Person query = new Person();
         SQLQueryBuilder sqlQueryBuilder = new SQLQueryBuilder();
-        query.setAge("18");
+        query.setAge(18);
         query.setName("Иван");
         query.setSurname("Михайлов");
         String sqlQuery = sqlQueryBuilder.buildDeleteQuery(query);
         System.out.println(sqlQuery);
-        assertEquals("DELETE * FROM persons WHERE surname = 'Михайлов' and name = 'Иван' and age = '18'", sqlQuery);
+        assertEquals("DELETE FROM persons WHERE surname = 'Михайлов' and name = 'Иван' and age = '18'", sqlQuery);
     }
 
     @Test

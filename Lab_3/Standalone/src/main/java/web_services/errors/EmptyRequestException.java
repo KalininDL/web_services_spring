@@ -13,6 +13,12 @@ public class EmptyRequestException extends Exception {
         super(message);
         this.fault = fault;
     }
+
+    public EmptyRequestException(String message) {
+        super(message);
+        this.fault = new PersonServiceFault();
+    }
+
     public EmptyRequestException(String message, PersonServiceFault fault, Throwable cause) {
         super(message, cause);
         this.fault = fault;
