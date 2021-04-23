@@ -1,15 +1,34 @@
 package web_services.model;
 
-public class Person {
+import web_services.SQLConvertable;
+import web_services.annotations.QueryClass;
+import web_services.annotations.QueryField;
+
+@QueryClass
+public class Person implements SQLConvertable {
+
+    @QueryField
     private String name;
+
+    @QueryField
     private String surname;
+
+    @QueryField
     private int age;
+
+    @QueryField
     private int id;
+
+    @QueryField
     private String country;
+
+    @QueryField
     private String gender;
 
-    public Person() {
+    public int getId() {
+        return id;
     }
+
     public Person(String name, String surname, int age, String country, String gender) {
         this.id = id;
         this.name = name;
@@ -18,6 +37,12 @@ public class Person {
         this.country = country;
         this.gender = gender;
     }
+
+    public Person(){
+
+    }
+
+
     public String getName() {
         return name;
     }
