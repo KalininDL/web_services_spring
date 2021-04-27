@@ -3,6 +3,7 @@
 // PVS-Studio Static Code Analyzer for C, C++, C#, and Java: http://www.viva64.com
 package web_services.util;
 
+import org.mariadb.jdbc.MariaDbPoolDataSource;
 import web_services.App;
 import web_services.MariaDBDAO;
 
@@ -16,6 +17,8 @@ import java.util.logging.Logger;
 
 public class ConnectionUtil implements AutoCloseable{
 
+
+    static Connection connection;
     static Properties prop = new Properties();
     static {
         try {
@@ -27,17 +30,19 @@ public class ConnectionUtil implements AutoCloseable{
     }
 
 
-    public static Connection getConnection() {
-        Connection connection = null;
-        try {
-            connection = DriverManager.getConnection(
-                    prop.getProperty("JDBC_URL"),
-                    prop.getProperty("JDBC_USER"),
-                    prop.getProperty("JDBC_PASSWORD"));
-        } catch (SQLException ex) {
-            Logger.getLogger(ConnectionUtil.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return connection;
+    public static Connection getConnection() throws SQLException {
+            try {
+                if(connection == null || connection.isClosed()) {
+                connection = DriverManager.getConnection(
+                        prop.getProperty("JDBC_URL"),
+                        prop.getProperty("JDBC_USER"),
+                        prop.getProperty("JDBC_PASSWORD"));
+                } else return connection;
+            } catch (SQLException ex) {
+                Logger.getLogger(ConnectionUtil.class.getName()).log(Level.SEVERE, null, ex);
+                throw ex;
+            }
+            return connection;
     }
 
     @Override

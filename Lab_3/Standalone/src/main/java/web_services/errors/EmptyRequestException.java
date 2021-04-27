@@ -4,7 +4,7 @@ import web_services.errors.faultbeans.PersonServiceFault;
 
 import javax.xml.ws.WebFault;
 @WebFault(faultBean = "web_services.errors.faultbeans.PersonServiceFault")
-public class EmptyRequestException extends Exception {
+public class EmptyRequestException extends ServerException {
 
     private static final long serialVersionUID = -6647544772732631047L;
     private final PersonServiceFault fault;
@@ -20,7 +20,7 @@ public class EmptyRequestException extends Exception {
     }
 
     public EmptyRequestException(String message, PersonServiceFault fault, Throwable cause) {
-        super(message, cause);
+        super(message);
         this.fault = fault;
     }
     public PersonServiceFault getFaultInfo() {

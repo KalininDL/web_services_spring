@@ -10,8 +10,8 @@ import javax.xml.ws.WebFault;
  * Generated source version: 2.2
  * 
  */
-@WebFault(name = "PersonDoesNotExistException", targetNamespace = "http://web_services/")
-public class PersonDoesNotExistException
+@WebFault(name = "ServerException", targetNamespace = "http://web_services/")
+public class ServerException
     extends Exception
 {
 
@@ -26,7 +26,7 @@ public class PersonDoesNotExistException
      * @param message
      * @param faultInfo
      */
-    public PersonDoesNotExistException(String message, PersonServiceFault faultInfo) {
+    public ServerException(String message, PersonServiceFault faultInfo) {
         super(message);
         this.faultInfo = faultInfo;
     }
@@ -37,7 +37,7 @@ public class PersonDoesNotExistException
      * @param faultInfo
      * @param cause
      */
-    public PersonDoesNotExistException(String message, PersonServiceFault faultInfo, Throwable cause) {
+    public ServerException(String message, PersonServiceFault faultInfo, Throwable cause) {
         super(message, cause);
         this.faultInfo = faultInfo;
     }
