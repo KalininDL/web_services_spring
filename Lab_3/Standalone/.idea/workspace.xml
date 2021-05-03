@@ -23,19 +23,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="aad28b92-ee42-4abb-9cb5-bf595d30bb6a" name="Default Changelist" comment="Successfully checked using PVS-Studio">
-      <change afterPath="$PROJECT_DIR$/src/main/java/web_services/errors/ServerException.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../SOAP_client/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../SOAP_client/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SOAP_client/src/main/java/console_client/OperationHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/../SOAP_client/src/main/java/console_client/OperationHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SOAP_client/src/main/java/console_client/WebServiceClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/../SOAP_client/src/main/java/console_client/WebServiceClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SOAP_client/target/classes/console_client/OperationHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/../SOAP_client/target/classes/console_client/OperationHandler.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SOAP_client/target/classes/console_client/WebServiceClient.class" beforeDir="false" afterPath="$PROJECT_DIR$/../SOAP_client/target/classes/console_client/WebServiceClient.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/web_services/MariaDBDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/web_services/MariaDBDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/web_services/PersonWebService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/web_services/PersonWebService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/web_services/errors/EmptyRequestException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/web_services/errors/EmptyRequestException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/web_services/errors/PersonDoesNotExistException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/web_services/errors/PersonDoesNotExistException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/web_services/errors/SQLConvertException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/web_services/errors/SQLConvertException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/web_services/errors/ServerException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/web_services/errors/ServerException.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/web_services/util/ConnectionUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/web_services/util/ConnectionUtil.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/web_services/MariaDBDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/web_services/MariaDBDAO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/web_services/model/Person.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/web_services/model/Person.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/web_services/errors/ServerException.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/web_services/errors/ServerException.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/web_services/util/ConnectionUtil.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/web_services/util/ConnectionUtil.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/web_services/util/SQLQueryBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/web_services/util/SQLQueryBuilder.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -222,7 +221,9 @@
       <workItem from="1618496760927" duration="48000" />
       <workItem from="1619015960325" duration="13092000" />
       <workItem from="1619179729150" duration="1325000" />
-      <workItem from="1619190658059" duration="10751000" />
+      <workItem from="1619190658059" duration="12318000" />
+      <workItem from="1619868854296" duration="2000" />
+      <workItem from="1620030227941" duration="3073000" />
     </task>
     <task id="LOCAL-00001" summary="Bug fix in delete query builder">
       <created>1618332530297</created>
@@ -315,26 +316,26 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="421" y="96" key="FileChooserDialogImpl/0.0.1280.680@0.0.1280.680" timestamp="1616508138877" />
-    <state width="618" height="261" key="GridCell.Tab.0.bottom" timestamp="1619547557242">
+    <state width="1237" height="127" key="GridCell.Tab.0.bottom" timestamp="1620031983749">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state width="1877" height="163" key="GridCell.Tab.0.bottom/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1616179681896" />
-    <state width="618" height="261" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1619547557242" />
-    <state width="618" height="261" key="GridCell.Tab.0.center" timestamp="1619547557241">
+    <state width="1237" height="127" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1620031983749" />
+    <state width="1237" height="127" key="GridCell.Tab.0.center" timestamp="1620031983749">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state width="1877" height="163" key="GridCell.Tab.0.center/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1616179681896" />
-    <state width="618" height="261" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1619547557241" />
-    <state width="618" height="261" key="GridCell.Tab.0.left" timestamp="1619547557241">
+    <state width="1237" height="127" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1620031983749" />
+    <state width="1237" height="127" key="GridCell.Tab.0.left" timestamp="1620031983749">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state width="1877" height="163" key="GridCell.Tab.0.left/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1616179681896" />
-    <state width="618" height="261" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1619547557241" />
-    <state width="618" height="261" key="GridCell.Tab.0.right" timestamp="1619547557241">
+    <state width="1237" height="127" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1620031983749" />
+    <state width="1237" height="127" key="GridCell.Tab.0.right" timestamp="1620031983749">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state width="1877" height="163" key="GridCell.Tab.0.right/0.0.1280.680/1920.0.1920.1040@1920.0.1920.1040" timestamp="1616179681896" />
-    <state width="618" height="261" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1619547557241" />
+    <state width="1237" height="127" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1620031983749" />
     <state width="198" height="457" key="HiddenNamespacesPopup" timestamp="1619190674332">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
@@ -390,13 +391,18 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/web_services/MariaDBDAO.java</url>
-          <line>78</line>
+          <line>82</line>
           <option name="timeStamp" value="11" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/web_services/model/SQLQueryConverter.java</url>
           <line>40</line>
           <option name="timeStamp" value="14" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/web_services/util/ConnectionUtil.java</url>
+          <line>40</line>
+          <option name="timeStamp" value="16" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

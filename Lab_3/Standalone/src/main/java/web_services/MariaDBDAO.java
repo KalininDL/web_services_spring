@@ -38,7 +38,8 @@ public class MariaDBDAO {
 
     public Person[] getPersons() throws ServerException {
         Person[] persons_array = new Person[0];
-        try (Statement stmt = ConnectionUtil.getConnection().createStatement()) {
+        try (Connection conn = ConnectionUtil.getConnection();
+             Statement stmt = conn.createStatement()) {
             ResultSet rs = stmt.executeQuery("select * from persons");
             persons_array = processQuery(rs);
         } catch (SQLException ex) {
@@ -49,7 +50,8 @@ public class MariaDBDAO {
     }
 
     public String executeUpdateQuery(String sqlQuery) throws ServerException {
-        try (Statement stmt = ConnectionUtil.getConnection().createStatement()) {
+        try (Connection conn = ConnectionUtil.getConnection();
+             Statement stmt = conn.createStatement()) {
             int res = stmt.executeUpdate(sqlQuery);
             String result = "Query affected " + res + " rows";
             System.out.println(result);
@@ -62,7 +64,8 @@ public class MariaDBDAO {
 
     public Person[] getPersonsBySqlQuery(String sqlQuery) throws ServerException {
         Person[] persons_array = new Person[0];
-        try (Statement stmt = ConnectionUtil.getConnection().createStatement()) {
+        try (Connection conn = ConnectionUtil.getConnection();
+             Statement stmt = conn.createStatement()) {
             ResultSet rs = stmt.executeQuery(sqlQuery);
             persons_array = processQuery(rs);
         } catch (SQLException ex) {
@@ -73,7 +76,8 @@ public class MariaDBDAO {
     }
 
     public Boolean checkIfPersonExists(String sqlQuery) throws ServerException {
-        try (Statement stmt = ConnectionUtil.getConnection().createStatement()) {
+        try (Connection conn = ConnectionUtil.getConnection();
+             Statement stmt = conn.createStatement()) {
             ResultSet rs = stmt.executeQuery(sqlQuery);
             return processQuery(rs).length > 0;
         } catch (SQLException ex) {

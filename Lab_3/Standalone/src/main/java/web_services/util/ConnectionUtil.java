@@ -6,6 +6,7 @@ package web_services.util;
 import org.mariadb.jdbc.MariaDbPoolDataSource;
 import web_services.App;
 import web_services.MariaDBDAO;
+import web_services.errors.ServerException;
 
 import java.io.IOException;
 import java.sql.Connection;
@@ -30,7 +31,7 @@ public class ConnectionUtil implements AutoCloseable{
     }
 
 
-    public static Connection getConnection() throws SQLException {
+    public static Connection getConnection() throws ServerException {
             try {
                 if(connection == null || connection.isClosed()) {
                 connection = DriverManager.getConnection(
@@ -40,7 +41,7 @@ public class ConnectionUtil implements AutoCloseable{
                 } else return connection;
             } catch (SQLException ex) {
                 Logger.getLogger(ConnectionUtil.class.getName()).log(Level.SEVERE, null, ex);
-                throw ex;
+                throw new ServerException("Unable to connect to database");
             }
             return connection;
     }

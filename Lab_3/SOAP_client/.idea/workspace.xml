@@ -23,19 +23,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e9e89d97-f03e-4452-a94b-9b45ffc2c833" name="Default Changelist" comment="Error handling implemented">
-      <change afterPath="$PROJECT_DIR$/../Standalone/src/main/java/web_services/errors/ServerException.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/console_client/OperationHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/console_client/OperationHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/console_client/WebServiceClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/console_client/WebServiceClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/console_client/OperationHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/console_client/OperationHandler.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/console_client/WebServiceClient.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/console_client/WebServiceClient.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Standalone/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Standalone/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Standalone/src/main/java/web_services/MariaDBDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Standalone/src/main/java/web_services/MariaDBDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Standalone/src/main/java/web_services/PersonWebService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Standalone/src/main/java/web_services/PersonWebService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Standalone/src/main/java/web_services/errors/EmptyRequestException.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Standalone/src/main/java/web_services/errors/EmptyRequestException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Standalone/src/main/java/web_services/errors/PersonDoesNotExistException.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Standalone/src/main/java/web_services/errors/PersonDoesNotExistException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Standalone/src/main/java/web_services/errors/SQLConvertException.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Standalone/src/main/java/web_services/errors/SQLConvertException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Standalone/src/main/java/web_services/errors/ServerException.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Standalone/src/main/java/web_services/errors/ServerException.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Standalone/src/main/java/web_services/util/ConnectionUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Standalone/src/main/java/web_services/util/ConnectionUtil.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Standalone/target/classes/web_services/MariaDBDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/../Standalone/target/classes/web_services/MariaDBDAO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Standalone/target/classes/web_services/model/Person.class" beforeDir="false" afterPath="$PROJECT_DIR$/../Standalone/target/classes/web_services/model/Person.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Standalone/target/classes/web_services/errors/ServerException.class" beforeDir="false" afterPath="$PROJECT_DIR$/../Standalone/target/classes/web_services/errors/ServerException.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Standalone/target/classes/web_services/util/ConnectionUtil.class" beforeDir="false" afterPath="$PROJECT_DIR$/../Standalone/target/classes/web_services/util/ConnectionUtil.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Standalone/target/classes/web_services/util/SQLQueryBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/../Standalone/target/classes/web_services/util/SQLQueryBuilder.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -85,7 +84,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../Lab_4/REST_standalone" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="project.structure.last.edited" value="Modules" />
@@ -107,13 +106,15 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
           <option name="containerStateName" value="" />
         </value>
       </option>
-      <option name="TEST_OBJECT" value="class" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <properties />
+      <listeners />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -145,7 +146,8 @@
       <workItem from="1619015986924" duration="6789000" />
       <workItem from="1619179755190" duration="1309000" />
       <workItem from="1619190656167" duration="1191000" />
-      <workItem from="1619546465270" duration="1076000" />
+      <workItem from="1619546465270" duration="2608000" />
+      <workItem from="1620030837383" duration="2990000" />
     </task>
     <task id="LOCAL-00001" summary="Basic CRUD implemented">
       <created>1618332406894</created>
@@ -208,11 +210,11 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="371" y="88" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1280.680/1920.0.1920.1040@0.0.1280.680" timestamp="1616169171416" />
-    <state x="421" y="92" width="439" height="494" key="#com.intellij.ws.actions.GenerateJavaFromWsdlAction$1" timestamp="1619174221029">
+    <state x="421" y="92" width="439" height="494" key="#com.intellij.ws.actions.GenerateJavaFromWsdlAction$1" timestamp="1619547704649">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="421" y="92" width="439" height="494" key="#com.intellij.ws.actions.GenerateJavaFromWsdlAction$1/0.0.1280.680/1920.0.1920.1040@0.0.1280.680" timestamp="1616178281144" />
-    <state x="421" y="92" key="#com.intellij.ws.actions.GenerateJavaFromWsdlAction$1/0.0.1280.680@0.0.1280.680" timestamp="1619174221029" />
+    <state x="421" y="92" key="#com.intellij.ws.actions.GenerateJavaFromWsdlAction$1/0.0.1280.680@0.0.1280.680" timestamp="1619547704649" />
     <state x="487" y="253" width="307" height="229" key="#com.intellij.ws.actions.GenerateWsdlFromJavaDialog" timestamp="1616408891747">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
@@ -222,26 +224,30 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="264" y="0" key="CommitChangelistDialog2/0.0.1280.680@0.0.1280.680" timestamp="1616508390425" />
-    <state width="1237" height="313" key="GridCell.Tab.0.bottom" timestamp="1619546949747">
+    <state x="421" y="96" key="FileChooserDialogImpl" timestamp="1620038089397">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="421" y="96" key="FileChooserDialogImpl/0.0.1280.680@0.0.1280.680" timestamp="1620038089397" />
+    <state width="1237" height="223" key="GridCell.Tab.0.bottom" timestamp="1620031992320">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state width="1237" height="163" key="GridCell.Tab.0.bottom/0.0.1280.680/1920.0.1920.1040@0.0.1280.680" timestamp="1616180406339" />
-    <state width="1237" height="313" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1619546949747" />
-    <state width="1237" height="313" key="GridCell.Tab.0.center" timestamp="1619546949746">
+    <state width="1237" height="223" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1620031992320" />
+    <state width="1237" height="223" key="GridCell.Tab.0.center" timestamp="1620031992320">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state width="1237" height="163" key="GridCell.Tab.0.center/0.0.1280.680/1920.0.1920.1040@0.0.1280.680" timestamp="1616180406338" />
-    <state width="1237" height="313" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1619546949746" />
-    <state width="1237" height="313" key="GridCell.Tab.0.left" timestamp="1619546949746">
+    <state width="1237" height="223" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1620031992320" />
+    <state width="1237" height="223" key="GridCell.Tab.0.left" timestamp="1620031992320">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state width="1237" height="163" key="GridCell.Tab.0.left/0.0.1280.680/1920.0.1920.1040@0.0.1280.680" timestamp="1616180406338" />
-    <state width="1237" height="313" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1619546949746" />
-    <state width="1237" height="313" key="GridCell.Tab.0.right" timestamp="1619546949747">
+    <state width="1237" height="223" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1620031992320" />
+    <state width="1237" height="223" key="GridCell.Tab.0.right" timestamp="1620031992320">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state width="1237" height="163" key="GridCell.Tab.0.right/0.0.1280.680/1920.0.1920.1040@0.0.1280.680" timestamp="1616180406338" />
-    <state width="1237" height="313" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1619546949747" />
+    <state width="1237" height="223" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1620031992320" />
     <state x="142" y="0" key="SettingsEditor" timestamp="1616178958556">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
@@ -254,10 +260,10 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="377" y="54" key="git4idea.branch.GitSmartOperationDialog/0.0.1280.680@0.0.1280.680" timestamp="1619026913012" />
-    <state x="303" y="1" width="672" height="678" key="search.everywhere.popup" timestamp="1619174215099">
+    <state x="303" y="1" width="672" height="678" key="search.everywhere.popup" timestamp="1619547699986">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="303" y="1" width="672" height="678" key="search.everywhere.popup/0.0.1280.680/1920.0.1920.1040@0.0.1280.680" timestamp="1616178278990" />
-    <state x="303" y="1" width="672" height="678" key="search.everywhere.popup/0.0.1280.680@0.0.1280.680" timestamp="1619174215099" />
+    <state x="303" y="1" width="672" height="678" key="search.everywhere.popup/0.0.1280.680@0.0.1280.680" timestamp="1619547699986" />
   </component>
 </project>
