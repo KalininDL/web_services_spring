@@ -12,7 +12,7 @@ class SQLQueryBuilderTest {
     @Test
     void buildInsertQuery() throws SQLConvertException {
         Person query = new Person();
-        SQLQueryBuilder sqlQueryBuilder = new SQLQueryBuilder();
+        SQLQueryBuilder sqlQueryBuilder =new SQLQueryBuilder();
         query.setAge(18);
         query.setName("Иван");
         query.setSurname("Михайлов");

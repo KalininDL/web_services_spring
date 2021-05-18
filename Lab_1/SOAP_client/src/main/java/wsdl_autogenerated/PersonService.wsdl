@@ -4,20 +4,14 @@
 <xsd:import namespace="http://web_services/" schemaLocation="http://localhost:8080/PersonService?xsd=1" />
 </xsd:schema>
 </types>
-<message name="selectPersonsByQueryClass">
+<message name="insertPersonByQueryClass">
 <part name="arg0" type="tns:person" />
 </message>
-<message name="selectPersonsByQueryClassResponse">
-<part name="return" type="tns:personArray" />
+<message name="insertPersonByQueryClassResponse">
+<part name="return" type="xsd:string" />
 </message>
-<message name="PersonDoesNotExistException">
-<part name="fault" element="tns:PersonDoesNotExistException" />
-</message>
-<message name="EmptyRequestException">
-<part name="fault" element="tns:EmptyRequestException" />
-</message>
-<message name="SQLConvertException">
-<part name="fault" element="tns:SQLConvertException" />
+<message name="ServerException">
+<part name="fault" element="tns:ServerException" />
 </message>
 <message name="updatePersonByQueryClass">
 <part name="arg0" type="tns:person" />
@@ -26,16 +20,16 @@
 <message name="updatePersonByQueryClassResponse">
 <part name="return" type="xsd:string" />
 </message>
+<message name="selectPersonsByQueryClass">
+<part name="arg0" type="tns:person" />
+</message>
+<message name="selectPersonsByQueryClassResponse">
+<part name="return" type="tns:personArray" />
+</message>
 <message name="deletePersonByQueryClass">
 <part name="arg0" type="tns:person" />
 </message>
 <message name="deletePersonByQueryClassResponse">
-<part name="return" type="xsd:string" />
-</message>
-<message name="insertPersonByQueryClass">
-<part name="arg0" type="tns:person" />
-</message>
-<message name="insertPersonByQueryClassResponse">
 <part name="return" type="xsd:string" />
 </message>
 <message name="getPersons" />
@@ -43,40 +37,35 @@
 <part name="return" type="tns:personArray" />
 </message>
 <portType name="PersonWebService">
-<operation name="selectPersonsByQueryClass">
-<input message="tns:selectPersonsByQueryClass" />
-<output message="tns:selectPersonsByQueryClassResponse" />
-<fault message="tns:PersonDoesNotExistException" name="PersonDoesNotExistException" />
-<fault message="tns:EmptyRequestException" name="EmptyRequestException" />
-<fault message="tns:SQLConvertException" name="SQLConvertException" />
+<operation name="insertPersonByQueryClass">
+<input message="tns:insertPersonByQueryClass" />
+<output message="tns:insertPersonByQueryClassResponse" />
+<fault message="tns:ServerException" name="ServerException" />
 </operation>
 <operation name="updatePersonByQueryClass" parameterOrder="arg0 arg1">
 <input message="tns:updatePersonByQueryClass" />
 <output message="tns:updatePersonByQueryClassResponse" />
-<fault message="tns:PersonDoesNotExistException" name="PersonDoesNotExistException" />
-<fault message="tns:EmptyRequestException" name="EmptyRequestException" />
-<fault message="tns:SQLConvertException" name="SQLConvertException" />
+<fault message="tns:ServerException" name="ServerException" />
+</operation>
+<operation name="selectPersonsByQueryClass">
+<input message="tns:selectPersonsByQueryClass" />
+<output message="tns:selectPersonsByQueryClassResponse" />
+<fault message="tns:ServerException" name="ServerException" />
 </operation>
 <operation name="deletePersonByQueryClass">
 <input message="tns:deletePersonByQueryClass" />
 <output message="tns:deletePersonByQueryClassResponse" />
-<fault message="tns:PersonDoesNotExistException" name="PersonDoesNotExistException" />
-<fault message="tns:EmptyRequestException" name="EmptyRequestException" />
-<fault message="tns:SQLConvertException" name="SQLConvertException" />
-</operation>
-<operation name="insertPersonByQueryClass">
-<input message="tns:insertPersonByQueryClass" />
-<output message="tns:insertPersonByQueryClassResponse" />
-<fault message="tns:SQLConvertException" name="SQLConvertException" />
+<fault message="tns:ServerException" name="ServerException" />
 </operation>
 <operation name="getPersons">
 <input message="tns:getPersons" />
 <output message="tns:getPersonsResponse" />
+<fault message="tns:ServerException" name="ServerException" />
 </operation>
 </portType>
 <binding name="PersonWebServicePortBinding" type="tns:PersonWebService">
 <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="rpc" />
-<operation name="selectPersonsByQueryClass">
+<operation name="insertPersonByQueryClass">
 <soap:operation soapAction="" />
 <input>
 <soap:body use="literal" namespace="http://web_services/" />
@@ -84,14 +73,8 @@
 <output>
 <soap:body use="literal" namespace="http://web_services/" />
 </output>
-<fault name="PersonDoesNotExistException">
-<soap:fault name="PersonDoesNotExistException" use="literal" />
-</fault>
-<fault name="EmptyRequestException">
-<soap:fault name="EmptyRequestException" use="literal" />
-</fault>
-<fault name="SQLConvertException">
-<soap:fault name="SQLConvertException" use="literal" />
+<fault name="ServerException">
+<soap:fault name="ServerException" use="literal" />
 </fault>
 </operation>
 <operation name="updatePersonByQueryClass">
@@ -102,14 +85,20 @@
 <output>
 <soap:body use="literal" namespace="http://web_services/" />
 </output>
-<fault name="PersonDoesNotExistException">
-<soap:fault name="PersonDoesNotExistException" use="literal" />
+<fault name="ServerException">
+<soap:fault name="ServerException" use="literal" />
 </fault>
-<fault name="EmptyRequestException">
-<soap:fault name="EmptyRequestException" use="literal" />
-</fault>
-<fault name="SQLConvertException">
-<soap:fault name="SQLConvertException" use="literal" />
+</operation>
+<operation name="selectPersonsByQueryClass">
+<soap:operation soapAction="" />
+<input>
+<soap:body use="literal" namespace="http://web_services/" />
+</input>
+<output>
+<soap:body use="literal" namespace="http://web_services/" />
+</output>
+<fault name="ServerException">
+<soap:fault name="ServerException" use="literal" />
 </fault>
 </operation>
 <operation name="deletePersonByQueryClass">
@@ -120,26 +109,8 @@
 <output>
 <soap:body use="literal" namespace="http://web_services/" />
 </output>
-<fault name="PersonDoesNotExistException">
-<soap:fault name="PersonDoesNotExistException" use="literal" />
-</fault>
-<fault name="EmptyRequestException">
-<soap:fault name="EmptyRequestException" use="literal" />
-</fault>
-<fault name="SQLConvertException">
-<soap:fault name="SQLConvertException" use="literal" />
-</fault>
-</operation>
-<operation name="insertPersonByQueryClass">
-<soap:operation soapAction="" />
-<input>
-<soap:body use="literal" namespace="http://web_services/" />
-</input>
-<output>
-<soap:body use="literal" namespace="http://web_services/" />
-</output>
-<fault name="SQLConvertException">
-<soap:fault name="SQLConvertException" use="literal" />
+<fault name="ServerException">
+<soap:fault name="ServerException" use="literal" />
 </fault>
 </operation>
 <operation name="getPersons">
@@ -150,6 +121,9 @@
 <output>
 <soap:body use="literal" namespace="http://web_services/" />
 </output>
+<fault name="ServerException">
+<soap:fault name="ServerException" use="literal" />
+</fault>
 </operation>
 </binding>
 <service name="PersonService">

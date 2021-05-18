@@ -17,7 +17,7 @@ public class OperationHandler {
     ConsoleInputReader inputReader;
     PersonService personService;
 
-    public void operationSelectDialog() throws Exception {
+    public void operationSelectDialog() throws ServerException{
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
         System.out.println("Select operation: \n"
         + "\t1 - search\n" +
@@ -55,7 +55,8 @@ public class OperationHandler {
         }
     }
 
-    public void selectQuery() throws Exception {
+    public void selectQuery() throws ServerException {
+        try {
             Person query = inputReader.readSearchInput();
             PersonArray persons = personService.getPersonWebServicePort().selectPersonsByQueryClass(query);
             for (Person person : persons.getItem()) {
@@ -64,9 +65,12 @@ public class OperationHandler {
                         ", country: " + person.getCountry() + ", gender: " + person.getGender());
             }
             System.out.println("Total persons: " + persons.getItem().size());
+        } catch (SOAPFaultException e){
+            System.out.println("Server returned error: " + e.getMessage());
+        }
     }
 
-    public void insertQuery() throws SQLConvertException {
+    public void insertQuery() throws ServerException {
         Person query = inputReader.readInsertInput();
         String result = personService.getPersonWebServicePort().insertPersonByQueryClass(query);
         if (result != null)
@@ -75,7 +79,7 @@ public class OperationHandler {
             System.out.println("Server error");
     }
 
-    public void updateQuery() throws Exception {
+    public void updateQuery() throws ServerException {
         Person from = inputReader.readSearchInput();
         System.out.println("Insert updated information");
         Person to = inputReader.readInsertInput();
@@ -86,7 +90,7 @@ public class OperationHandler {
             System.out.println("Server error");
     }
 
-    public void deleteQuery() throws Exception {
+    public void deleteQuery() throws SOAPFaultException, ServerException {
         Person query = inputReader.readSearchInput();
         String result = personService.getPersonWebServicePort().deletePersonByQueryClass(query);
         if (result != null)

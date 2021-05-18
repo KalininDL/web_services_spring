@@ -3,6 +3,7 @@
 // PVS-Studio Static Code Analyzer for C, C++, C#, and Java: http://www.viva64.com
 package web_services.util;
 
+import web_services.MariaDBDAO;
 import web_services.errors.EmptyRequestException;
 import web_services.errors.SQLConvertException;
 import web_services.errors.faultbeans.PersonServiceFault;
@@ -14,11 +15,7 @@ import java.util.Map;
 
 public class SQLQueryBuilder {
 
-    private SQLQueryConverter converter;
-
-    public SQLQueryBuilder(){
-        converter = new SQLQueryConverter();
-    }
+    private SQLQueryConverter converter = new SQLQueryConverter();
 
     public String buildInsertQuery(SQLConvertable query) throws SQLConvertException {
             HashMap<String, String> map = converter.getQueryMap(query);
@@ -75,7 +72,7 @@ public class SQLQueryBuilder {
     public String buildSelectQuery(SQLConvertable query) throws EmptyRequestException, SQLConvertException {
         HashMap<String, String> map = converter.getQueryMap(query);
         PersonServiceFault fault = new PersonServiceFault();
-        if(map.size() == 0) throw new EmptyRequestException("Query is empty!", fault);
+        if(map.size() == 0) throw new EmptyRequestException("Query is empty!");
         StringBuilder sqlQuery = new StringBuilder("SELECT * FROM persons WHERE ");
         int counter = 0;
         for (Map.Entry<String, String> e: map.entrySet()){

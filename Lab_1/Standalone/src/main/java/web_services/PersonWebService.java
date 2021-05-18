@@ -10,6 +10,7 @@ import web_services.util.SQLQueryBuilder;
 import javax.jws.WebMethod;
 import javax.jws.WebService;
 import javax.jws.soap.SOAPBinding;
+import javax.xml.ws.soap.MTOM;
 
 @WebService(serviceName = "PersonService")
 @SOAPBinding(style = SOAPBinding.Style.RPC)
@@ -33,6 +34,8 @@ public class PersonWebService {
         Person[] persons_array = dao.getPersons();
         return persons_array;
     }
+
+
 
     //I had to change the method signature and return arrays of Persons.
     // JAXB is able to serialize lists in standalone app but fails with glassfish
