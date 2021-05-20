@@ -57,7 +57,7 @@ public class OperationHandler {
 
     public void selectQuery() throws EmptyRequestException, SQLConvertException, PersonDoesNotExistException {
             Person query = inputReader.readSearchInput();
-            PersonArray persons = personService.getPersonWebServicePort().selectPersonsByQueryClass(query);
+            PersonArray persons = personService.getPersonWebServicePort().selectPersons(query);
             for (Person person : persons.getItem()) {
                 System.out.println("name: " + person.getName() +
                         ", surname: " + person.getSurname() + ", age: " + person.getAge() +
@@ -66,9 +66,9 @@ public class OperationHandler {
             System.out.println("Total persons: " + persons.getItem().size());
     }
 
-    public void insertQuery() throws SQLConvertException {
+    public void insertQuery() throws SQLConvertException, EmptyRequestException {
         Person query = inputReader.readInsertInput();
-        String result = personService.getPersonWebServicePort().insertPersonByQueryClass(query);
+        String result = personService.getPersonWebServicePort().insertPerson(query);
         if (result != null)
             System.out.println(result);
         else
@@ -76,10 +76,10 @@ public class OperationHandler {
     }
 
     public void updateQuery() throws EmptyRequestException, SQLConvertException, PersonDoesNotExistException {
-        Person from = inputReader.readSearchInput();
+        int id = inputReader.readNum("Enter the ID of the person you want to change");
         System.out.println("Insert updated information");
-        Person to = inputReader.readInsertInput();
-        String result = personService.getPersonWebServicePort().updatePersonByQueryClass(from, to);
+        Person newPerson = inputReader.readInsertInput();
+        String result = personService.getPersonWebServicePort().updatePersonByID(id, newPerson);
         if (result != null)
             System.out.println(result);
         else
@@ -87,12 +87,11 @@ public class OperationHandler {
     }
 
     public void deleteQuery() throws SOAPFaultException, EmptyRequestException, SQLConvertException, PersonDoesNotExistException {
-        Person query = inputReader.readSearchInput();
-        String result = personService.getPersonWebServicePort().deletePersonByQueryClass(query);
+        int id = inputReader.readNum("Enter the ID of the person you want to delete");
+        String result = personService.getPersonWebServicePort().deletePersonByID(id);
         if (result != null)
             System.out.println(result);
         else
             System.out.println("Server error");
     }
-
 }

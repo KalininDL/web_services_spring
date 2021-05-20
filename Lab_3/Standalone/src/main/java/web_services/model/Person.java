@@ -37,9 +37,12 @@ public class Person implements SQLConvertable {
         this.gender = gender;
     }
 
-    public Person(){
 
+    public Person(int id){
+        this.id = id;
     }
+
+    public Person() { }
 
 
     public String getName() {

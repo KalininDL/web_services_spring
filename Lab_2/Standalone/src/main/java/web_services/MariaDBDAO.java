@@ -25,7 +25,9 @@ public class MariaDBDAO {
                 int age = rs.getInt("age");
                 String country = rs.getString("country");
                 String gender = rs.getString("gender");
+                int id = rs.getInt("id");
                 Person person = new Person(name, surname, age, country, gender);
+                person.setId(id);
                 persons.add(person);
             }
             persons_array = new Person[persons.size()];
@@ -49,11 +51,11 @@ public class MariaDBDAO {
         return persons_array;
     }
 
-    public String executeUpdateQuery(String sqlQuery){
+    public String executeUpdateQuery(String sqlQuery, String message){
         try (Connection connection = ConnectionUtil.getConnection()) {
             Statement stmt = connection.createStatement();
             int res = stmt.executeUpdate(sqlQuery);
-            String result = "Query affected " + res + " rows";
+            String result = "Successfully " + message + " " + res + " person(s)";
             System.out.println(result);
             return result;
         } catch (Exception ex) {

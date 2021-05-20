@@ -7,7 +7,6 @@ import javax.xml.ws.WebFault;
 @WebFault(faultBean = "web_services.errors.faultbeans.PersonServiceFault")
 public class SQLConvertException extends Exception {
 
-    private static final long serialVersionUID = -6647544772732631047L;
     private final PersonServiceFault fault;
 
     public SQLConvertException(String message) {

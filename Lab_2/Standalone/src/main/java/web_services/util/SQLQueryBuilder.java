@@ -37,8 +37,7 @@ public class SQLQueryBuilder {
             return sqlQuery.toString();
     }
 
-    public String buildUpdateQuery(SQLConvertable query, SQLConvertable update) throws SQLConvertException {
-        HashMap<String, String> map = converter.getQueryMap(query);
+    public String buildUpdateQuery(int id, SQLConvertable update) throws SQLConvertException {
         HashMap<String, String> updateMap = converter.getQueryMap(update);
         StringBuilder sqlQuery = new StringBuilder("UPDATE persons set ");
         int counter = 0;
@@ -48,24 +47,12 @@ public class SQLQueryBuilder {
             if (counter != updateMap.size()) sqlQuery.append(", ");
         }
         counter = 0;
-        sqlQuery.append(" WHERE ");
-        for (Map.Entry<String, String> e: map.entrySet()){
-            counter++;
-            sqlQuery.append(e.getKey() + " = " + "\'"+e.getValue()+"\'");
-            if (counter != map.size()) sqlQuery.append(" and ");
-        }
+        sqlQuery.append(" WHERE id = " + id);
         return sqlQuery.toString();
     }
 
-    public String buildDeleteQuery(SQLConvertable query) throws SQLConvertException {
-        HashMap<String, String> map = converter.getQueryMap(query);
-        StringBuilder sqlQuery = new StringBuilder("DELETE FROM persons WHERE ");
-        int counter = 0;
-        for (Map.Entry<String, String> e: map.entrySet()){
-            counter++;
-            sqlQuery.append(e.getKey() + " = " + "\'"+e.getValue()+"\'");
-            if (counter != map.size()) sqlQuery.append(" and ");
-        }
+    public String buildDeleteQuery(int id) throws SQLConvertException {
+        StringBuilder sqlQuery = new StringBuilder("DELETE FROM persons WHERE id = " + id);
         return sqlQuery.toString();
     }
 

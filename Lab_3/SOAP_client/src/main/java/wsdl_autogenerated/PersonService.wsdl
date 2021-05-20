@@ -4,57 +4,42 @@
 <xsd:import namespace="http://web_services/" schemaLocation="http://localhost:8080/PersonService?xsd=1" />
 </xsd:schema>
 </types>
-<message name="insertPersonByQueryClass">
-<part name="arg0" type="tns:person" />
+<message name="deletePersonByID">
+<part name="arg0" type="xsd:int" />
 </message>
-<message name="insertPersonByQueryClassResponse">
+<message name="deletePersonByIDResponse">
 <part name="return" type="xsd:string" />
 </message>
 <message name="ServerException">
 <part name="fault" element="tns:ServerException" />
 </message>
-<message name="updatePersonByQueryClass">
-<part name="arg0" type="tns:person" />
-<part name="arg1" type="tns:person" />
-</message>
-<message name="updatePersonByQueryClassResponse">
-<part name="return" type="xsd:string" />
-</message>
-<message name="selectPersonsByQueryClass">
-<part name="arg0" type="tns:person" />
-</message>
-<message name="selectPersonsByQueryClassResponse">
-<part name="return" type="tns:personArray" />
-</message>
-<message name="deletePersonByQueryClass">
-<part name="arg0" type="tns:person" />
-</message>
-<message name="deletePersonByQueryClassResponse">
-<part name="return" type="xsd:string" />
-</message>
 <message name="getPersons" />
 <message name="getPersonsResponse">
 <part name="return" type="tns:personArray" />
 </message>
+<message name="updatePersonByID">
+<part name="arg0" type="xsd:int" />
+<part name="arg1" type="tns:person" />
+</message>
+<message name="updatePersonByIDResponse">
+<part name="return" type="xsd:string" />
+</message>
+<message name="insertPerson">
+<part name="arg0" type="tns:person" />
+</message>
+<message name="insertPersonResponse">
+<part name="return" type="xsd:string" />
+</message>
+<message name="selectPersons">
+<part name="arg0" type="tns:person" />
+</message>
+<message name="selectPersonsResponse">
+<part name="return" type="tns:personArray" />
+</message>
 <portType name="PersonWebService">
-<operation name="insertPersonByQueryClass">
-<input message="tns:insertPersonByQueryClass" />
-<output message="tns:insertPersonByQueryClassResponse" />
-<fault message="tns:ServerException" name="ServerException" />
-</operation>
-<operation name="updatePersonByQueryClass" parameterOrder="arg0 arg1">
-<input message="tns:updatePersonByQueryClass" />
-<output message="tns:updatePersonByQueryClassResponse" />
-<fault message="tns:ServerException" name="ServerException" />
-</operation>
-<operation name="selectPersonsByQueryClass">
-<input message="tns:selectPersonsByQueryClass" />
-<output message="tns:selectPersonsByQueryClassResponse" />
-<fault message="tns:ServerException" name="ServerException" />
-</operation>
-<operation name="deletePersonByQueryClass">
-<input message="tns:deletePersonByQueryClass" />
-<output message="tns:deletePersonByQueryClassResponse" />
+<operation name="deletePersonByID">
+<input message="tns:deletePersonByID" />
+<output message="tns:deletePersonByIDResponse" />
 <fault message="tns:ServerException" name="ServerException" />
 </operation>
 <operation name="getPersons">
@@ -62,46 +47,25 @@
 <output message="tns:getPersonsResponse" />
 <fault message="tns:ServerException" name="ServerException" />
 </operation>
+<operation name="updatePersonByID" parameterOrder="arg0 arg1">
+<input message="tns:updatePersonByID" />
+<output message="tns:updatePersonByIDResponse" />
+<fault message="tns:ServerException" name="ServerException" />
+</operation>
+<operation name="insertPerson">
+<input message="tns:insertPerson" />
+<output message="tns:insertPersonResponse" />
+<fault message="tns:ServerException" name="ServerException" />
+</operation>
+<operation name="selectPersons">
+<input message="tns:selectPersons" />
+<output message="tns:selectPersonsResponse" />
+<fault message="tns:ServerException" name="ServerException" />
+</operation>
 </portType>
 <binding name="PersonWebServicePortBinding" type="tns:PersonWebService">
 <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="rpc" />
-<operation name="insertPersonByQueryClass">
-<soap:operation soapAction="" />
-<input>
-<soap:body use="literal" namespace="http://web_services/" />
-</input>
-<output>
-<soap:body use="literal" namespace="http://web_services/" />
-</output>
-<fault name="ServerException">
-<soap:fault name="ServerException" use="literal" />
-</fault>
-</operation>
-<operation name="updatePersonByQueryClass">
-<soap:operation soapAction="" />
-<input>
-<soap:body use="literal" namespace="http://web_services/" />
-</input>
-<output>
-<soap:body use="literal" namespace="http://web_services/" />
-</output>
-<fault name="ServerException">
-<soap:fault name="ServerException" use="literal" />
-</fault>
-</operation>
-<operation name="selectPersonsByQueryClass">
-<soap:operation soapAction="" />
-<input>
-<soap:body use="literal" namespace="http://web_services/" />
-</input>
-<output>
-<soap:body use="literal" namespace="http://web_services/" />
-</output>
-<fault name="ServerException">
-<soap:fault name="ServerException" use="literal" />
-</fault>
-</operation>
-<operation name="deletePersonByQueryClass">
+<operation name="deletePersonByID">
 <soap:operation soapAction="" />
 <input>
 <soap:body use="literal" namespace="http://web_services/" />
@@ -114,6 +78,42 @@
 </fault>
 </operation>
 <operation name="getPersons">
+<soap:operation soapAction="" />
+<input>
+<soap:body use="literal" namespace="http://web_services/" />
+</input>
+<output>
+<soap:body use="literal" namespace="http://web_services/" />
+</output>
+<fault name="ServerException">
+<soap:fault name="ServerException" use="literal" />
+</fault>
+</operation>
+<operation name="updatePersonByID">
+<soap:operation soapAction="" />
+<input>
+<soap:body use="literal" namespace="http://web_services/" />
+</input>
+<output>
+<soap:body use="literal" namespace="http://web_services/" />
+</output>
+<fault name="ServerException">
+<soap:fault name="ServerException" use="literal" />
+</fault>
+</operation>
+<operation name="insertPerson">
+<soap:operation soapAction="" />
+<input>
+<soap:body use="literal" namespace="http://web_services/" />
+</input>
+<output>
+<soap:body use="literal" namespace="http://web_services/" />
+</output>
+<fault name="ServerException">
+<soap:fault name="ServerException" use="literal" />
+</fault>
+</operation>
+<operation name="selectPersons">
 <soap:operation soapAction="" />
 <input>
 <soap:body use="literal" namespace="http://web_services/" />

@@ -1,5 +1,4 @@
 package web_services;
-
 import org.mariadb.jdbc.internal.util.exceptions.MariaDbSqlException;
 import web_services.errors.ServerException;
 import web_services.model.Person;
@@ -13,8 +12,9 @@ import java.util.logging.Logger;
 
 public class MariaDBDAO {
 
+    private ConnectionUtil connectionUtil = ConnectionUtil.getInstance();
 
-    private Person[] processQuery(ResultSet rs){
+    private List<Person> processQuery(ResultSet rs){
         Person[] persons_array = new Person[0];
         List<Person> persons = new ArrayList<>();
         try {
@@ -24,66 +24,51 @@ public class MariaDBDAO {
                 int age = rs.getInt("age");
                 String country = rs.getString("country");
                 String gender = rs.getString("gender");
+                int id = rs.getInt("id");
                 Person person = new Person(name, surname, age, country, gender);
+                person.setId(id);
                 persons.add(person);
             }
-            persons_array = new Person[persons.size()];
-            persons.toArray(persons_array);
-            return persons_array;
+            return persons;
         } catch (SQLException ex) {
             Logger.getLogger(MariaDBDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return persons_array;
+        return persons;
     }
 
-    public Person[] getPersons() throws ServerException {
-        Person[] persons_array = new Person[0];
-        try (Connection conn = ConnectionUtil.getConnection();
-             Statement stmt = conn.createStatement()) {
+    public List<Person> getPersons() throws ServerException {
+        return connectionUtil.statement(stmt -> {
             ResultSet rs = stmt.executeQuery("select * from persons");
-            persons_array = processQuery(rs);
-        } catch (SQLException ex) {
-            Logger.getLogger(MariaDBDAO.class.getName()).log(Level.SEVERE, null, ex);
-            throw new ServerException(ex.getMessage());
-        }
-        return persons_array;
+            return processQuery(rs);
+        });
     }
 
-    public String executeUpdateQuery(String sqlQuery) throws ServerException {
-        try (Connection conn = ConnectionUtil.getConnection();
-             Statement stmt = conn.createStatement()) {
-            int res = stmt.executeUpdate(sqlQuery);
-            String result = "Query affected " + res + " rows";
-            System.out.println(result);
-            return result;
-        } catch (Exception ex) {
-            Logger.getLogger(MariaDBDAO.class.getName()).log(Level.SEVERE, null, ex);
-            throw new ServerException(ex.getMessage());
-        }
+    public String executeUpdateQuery(String sqlQuery, String message) throws ServerException {
+        return connectionUtil.statement(stmt -> {
+            int affected  = stmt.executeUpdate(sqlQuery);
+            return  "Successfully " + message + " " + affected + " person(s)";
+        });
     }
 
-    public Person[] getPersonsBySqlQuery(String sqlQuery) throws ServerException {
-        Person[] persons_array = new Person[0];
-        try (Connection conn = ConnectionUtil.getConnection();
-             Statement stmt = conn.createStatement()) {
+    public List<Person> getPersonsBySqlQuery(String sqlQuery) throws ServerException {
+        return connectionUtil.statement(stmt -> {
             ResultSet rs = stmt.executeQuery(sqlQuery);
-            persons_array = processQuery(rs);
-        } catch (SQLException ex) {
-            Logger.getLogger(MariaDBDAO.class.getName()).log(Level.SEVERE, null, ex);
-            throw new ServerException(ex.getMessage());
-        }
-        return persons_array;
+            return processQuery(rs);
+        });
     }
 
     public Boolean checkIfPersonExists(String sqlQuery) throws ServerException {
-        try (Connection conn = ConnectionUtil.getConnection();
-             Statement stmt = conn.createStatement()) {
+        return connectionUtil.statement(stmt -> {
             ResultSet rs = stmt.executeQuery(sqlQuery);
-            return processQuery(rs).length > 0;
-        } catch (SQLException ex) {
-            Logger.getLogger(MariaDBDAO.class.getName()).log(Level.SEVERE, null, ex);
-            throw new ServerException(ex.getMessage());
-        }
+            return processQuery(rs).size() > 0;
+        });
     }
 
+    public List<Person> getPersonsByName(String name) throws ServerException {
+        return connectionUtil.preparedStatement("SELECT * FROM persons where name = ?", stmt -> {
+            stmt.setString(1, name);
+            ResultSet rs = stmt.executeQuery();
+            return processQuery(rs);
+        });
+    }
 }

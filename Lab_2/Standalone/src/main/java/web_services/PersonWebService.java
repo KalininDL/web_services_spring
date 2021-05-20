@@ -30,14 +30,13 @@ public class PersonWebService {
 
     @WebMethod(operationName = "getPersons")
     public Person[] getPersons() {
-        Person[] persons_array = dao.getPersons();
-        return persons_array;
+        return dao.getPersons();
     }
 
     //I had to change the method signature and return arrays of Persons.
     // JAXB is able to serialize lists in standalone app but fails with glassfish
     // and asks you to use arrays. I have no idea why
-    @WebMethod(operationName = "selectPersonsByQueryClass")
+    @WebMethod(operationName = "selectPersons")
     public Person[] selectPersonsByQueryClass(Person query) throws PersonDoesNotExistException, EmptyRequestException, SQLConvertException {
         try {
             Person[] persons_array = dao.getPersonsBySqlQuery(sqlQueryBuilder.buildSelectQuery(query));
@@ -49,34 +48,34 @@ public class PersonWebService {
         }
     }
 
-    @WebMethod(operationName = "deletePersonByQueryClass")
-    public String deletePersonByQueryClass(Person query) throws PersonDoesNotExistException, EmptyRequestException, SQLConvertException {
+    @WebMethod(operationName = "deletePersonByID")
+    public String deletePersonByID(int id) throws PersonDoesNotExistException, EmptyRequestException, SQLConvertException {
         try {
-            if (!dao.checkIfPersonExists(sqlQueryBuilder.buildSelectQuery(query)))
+            if (!dao.checkIfPersonExists(sqlQueryBuilder.buildSelectQuery(new Person(id))))
                 throw new PersonDoesNotExistException("Person with specified parameters does not exist!", fault);
-            return dao.executeUpdateQuery(sqlQueryBuilder.buildDeleteQuery(query));
+            return dao.executeUpdateQuery(sqlQueryBuilder.buildDeleteQuery(id), "deleted");
         } catch (EmptyRequestException | SQLConvertException e){
             throw e;
         }
     }
 
-    @WebMethod(operationName = "insertPersonByQueryClass")
-    public String insertPersonByQueryClass(Person query) throws SQLConvertException {
+    @WebMethod(operationName = "insertPerson")
+    public String insertPerson(Person person) throws SQLConvertException, EmptyRequestException {
         try {
-            String result = dao.executeUpdateQuery(sqlQueryBuilder.buildInsertQuery(query));
-            return result;
-        } catch ( SQLConvertException e){
+            String result = dao.executeUpdateQuery(sqlQueryBuilder.buildInsertQuery(person), "added");
+            Person[] created = dao.getPersonsBySqlQuery(sqlQueryBuilder.buildSelectQuery(person));
+            return "New person with id: " + created[0].getId() + " was successfully created!";
+        } catch (SQLConvertException | EmptyRequestException e){
             throw e;
         }
     }
 
-    @WebMethod(operationName = "updatePersonByQueryClass")
-    public String updatePersonByQueryClass(Person query, Person updated) throws PersonDoesNotExistException, EmptyRequestException, SQLConvertException {
+    @WebMethod(operationName = "updatePersonByID")
+    public String updatePersonByID(int id, Person updated) throws PersonDoesNotExistException, EmptyRequestException, SQLConvertException {
         try {
-            if (!dao.checkIfPersonExists(sqlQueryBuilder.buildSelectQuery(query)))
+            if (!dao.checkIfPersonExists(sqlQueryBuilder.buildSelectQuery(new Person(id))))
                 throw new PersonDoesNotExistException("Person with specified parameters does not exist!", fault);
-
-            return dao.executeUpdateQuery(sqlQueryBuilder.buildUpdateQuery(query, updated));
+            return dao.executeUpdateQuery(sqlQueryBuilder.buildUpdateQuery(id, updated), "updated");
         } catch (EmptyRequestException | SQLConvertException e){
             throw e;
         }

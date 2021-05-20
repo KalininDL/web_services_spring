@@ -7,29 +7,35 @@ import java.io.InputStreamReader;
 
 public class ConsoleInputReader {
 
-    private int readNum(BufferedReader reader, String message) throws IOException{
+    BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+
+    public int readNum(String message){
             System.out.println(message);
-            String age = reader.readLine();
-            if(age.equals("")) return -1;
-            else {
-                try {
-                    return Integer.parseInt(age);
-                } catch (NumberFormatException e) {
-                    System.out.println("Number is incorrect!");
-                    return readNum(reader, message);
+            try {
+                String age = reader.readLine();
+                if (age.equals("")) return -1;
+                else {
+                    try {
+                        return Integer.parseInt(age);
+                    } catch (NumberFormatException e) {
+                        System.out.println("Number is incorrect!");
+                        return readNum(message);
+                    }
                 }
+            } catch (IOException e){
+                System.out.println("Something went wrong, please try again");
+                return readNum(message);
             }
     }
 
     public Person readInsertInput() {
         Person query = new Person();
         try {
-            BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
             System.out.println("Enter name: ");
             query.setName(reader.readLine());
             System.out.println("Enter surname: ");
             query.setSurname(reader.readLine());
-            query.setAge(readNum(reader, "Enter age: "));
+            query.setAge(readNum("Enter age: "));
             System.out.println("Enter country: ");
             query.setCountry(reader.readLine());
             System.out.println("Enter gender: ");
@@ -45,13 +51,12 @@ public class ConsoleInputReader {
     public Person readSearchInput() {
         Person query = new Person();
         try {
-            BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-            query.setId(readNum(reader, "Enter ID: "));
+            query.setId(readNum("Enter ID: "));
             System.out.println("Enter name: ");
             query.setName(reader.readLine());
             System.out.println("Enter surname: ");
             query.setSurname(reader.readLine());
-            query.setAge(readNum(reader, "Enter age: "));
+            query.setAge(readNum("Enter age: "));
             System.out.println("Enter country: ");
             query.setCountry(reader.readLine());
             System.out.println("Enter gender: ");

@@ -5,7 +5,6 @@ import javax.xml.ws.WebFault;
 @WebFault(faultBean = "web_services.errors.faultbeans.PersonServiceFault")
 public class PersonDoesNotExistException extends Exception {
 
-    private static final long serialVersionUID = -6647544772732631047L;
     private final PersonServiceFault fault;
 
     public PersonDoesNotExistException(String message, PersonServiceFault fault) {
@@ -16,6 +15,7 @@ public class PersonDoesNotExistException extends Exception {
         super(message, cause);
         this.fault = fault;
     }
+
     public PersonServiceFault getFaultInfo() {
         return fault;
     }

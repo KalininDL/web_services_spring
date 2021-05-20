@@ -6,7 +6,6 @@ import javax.xml.ws.WebFault;
 @WebFault(faultBean = "web_services.errors.faultbeans.PersonServiceFault")
 public class EmptyRequestException extends Exception {
 
-    private static final long serialVersionUID = -6647544772732631047L;
     private final PersonServiceFault fault;
 
     public EmptyRequestException(String message, PersonServiceFault fault) {
